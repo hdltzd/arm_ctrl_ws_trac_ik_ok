@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/pi/arm_ctrl_ws_trac_ik/devel/setup.sh

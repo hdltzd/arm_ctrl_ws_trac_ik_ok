@@ -1,0 +1,9 @@
+float64 left_x
+float64 left_y
+float64 right_x
+float64 right_y
+int8  left_putter_a
+int8  right_putter_b
+float64 left_button_vra
+float64 right_button_vrb
+int8 connected

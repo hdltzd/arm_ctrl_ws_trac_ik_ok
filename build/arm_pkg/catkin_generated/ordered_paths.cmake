@@ -1,0 +1,1 @@
+set(ORDERED_PATHS "/home/pi/serial_ws/install/lib;/usr/lib/aarch64-linux-gnu")

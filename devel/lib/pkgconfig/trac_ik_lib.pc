@@ -1,0 +1,8 @@
+prefix=/home/pi/arm_ctrl_ws_trac_ik/devel
+
+Name: trac_ik_lib
+Description: Description of trac_ik_lib
+Version: 1.6.7
+Cflags: -I/home/pi/arm_ctrl_ws_trac_ik/src/trac_ik/trac_ik_lib/include
+Libs: -L${prefix}/lib -ltrac_ik -lboost_date_time -lnlopt
+Requires: kdl_parser roscpp urdf

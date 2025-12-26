@@ -1,0 +1,8 @@
+prefix=/home/pi/arm_ctrl_ws_trac_ik/install
+
+Name: arm_pkg
+Description: Description of arm_pkg
+Version: 0.0.0
+Cflags: -I\${prefix}/include
+Libs: 
+Requires: roscpp rospy std_msgs message_runtime

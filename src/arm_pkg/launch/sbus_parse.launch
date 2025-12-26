@@ -1,0 +1,9 @@
+<launch>
+      <arg name="debug" default="false" />
+
+      <node if="$(arg debug)" pkg="arm_pkg" type="sbus_parse" name="sbus_parse" 
+            output="screen" launch-prefix="xterm -e gdb --args" />
+      <node unless="$(arg debug)" pkg="arm_pkg" type="sbus_parse" name="sbus_parse" 
+            output="screen" launch-prefix="" />
+
+</launch>
