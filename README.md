@@ -66,3 +66,27 @@ sudo apt install ros-noetic-serial ros-noetic-plotjuggler-ros ros-noetic-kdl-par
 
 # (可选) 安装 Catkin Tools
 sudo apt install python3-catkin-tools
+###2. 编译工作空间
+
+# 创建并进入工作空间
+mkdir -p catkin_ws/src && cd catkin_ws/src
+
+# 克隆代码仓库
+git clone [https://github.com/Autonomous-Robotics-Lab-Team/arm_pkg.git](https://github.com/Autonomous-Robotics-Lab-Team/arm_pkg.git)
+# (注意：如果 trac_ik 是单独的包，也需 clone 或确保在 arm_pkg 内)
+
+# 编译
+cd ..
+catkin build
+
+# 刷新环境
+source devel/setup.bash
+###3. 运行测试
+确保 USB 串口设备已插入。
+
+
+# 启动 SBUS 解析节点 (测试遥控器通信)
+roslaunch arm_pkg sbus_parse.launch
+
+# 启动波形示波器 (查看数据)
+rosrun plotjuggler plotjuggler
