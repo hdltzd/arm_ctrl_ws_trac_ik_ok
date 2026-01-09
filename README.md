@@ -66,9 +66,8 @@ sudo apt install ros-noetic-serial ros-noetic-plotjuggler-ros ros-noetic-kdl-par
 
 # (可选) 安装 Catkin Tools
 sudo apt install python3-catkin-tools
-
+---
 ###2. 编译工作空间
-```bash
 # 创建并进入工作空间
 mkdir -p catkin_ws/src && cd catkin_ws/src
 
@@ -82,7 +81,7 @@ catkin build
 
 # 刷新环境
 source devel/setup.bash
-
+---
 ###3. 运行测试
 ```bash
 确保 USB 串口设备已插入。
