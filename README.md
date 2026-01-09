@@ -1,26 +1,68 @@
-本项目是一个基于 ROS 1 (Noetic) 的六轴机械臂控制系统，专为 Raspberry Pi / Jetson 等嵌入式平台设计。
-系统集成了 TRAC-IK 高性能逆运动学求解器、CAN 总线电机驱动以及 SBUS 遥控器解析，支持关节空间控制、笛卡尔空间运动控制（IK）以及自动归位功能。
+# 🤖 6-DOF Robotic Arm Control System (ROS Noetic)
 
-核心功能
-多模式控制架构：
-Mode 1 (自动复位)：一键执行关节逐个归零，自动回到初始姿态。
-Mode 2 (关节控制)：独立控制 6 个关节的速度，适合调试与粗调。
-Mode 3 (笛卡尔 IK 控制)：利用 TRAC-IK 实时解算，直接控制末端工具在 XYZ 空间平移及旋转（J6 独立控制夹爪）。
-混合解算算法：集成 trac_ik_lib，并发运行 KDL（牛顿-拉夫逊法）和 NLOPT（SQP 优化），解决传统 KDL 在奇异点解算失败的问题。
-嵌入式优化：针对树莓派环境优化，支持通过 Workspace Overlay 链接外部 serial 库。
-安全保护：内置低通滤波平滑算法、速度死区控制及电机错误清除机制。
+[![ROS](https://img.shields.io/badge/ROS-Noetic-blue.svg)](http://wiki.ros.org/noetic)
+[![Platform](https://img.shields.io/badge/Platform-Raspberry%20Pi%20%7C%20Jetson-green)]()
+[![License](https://img.shields.io/badge/License-BSD-orange)]()
 
-硬件清单
-计算平台：Raspberry Pi 4B / 5 或 NVIDIA Jetson (需运行 Ubuntu 20.04 + ROS Noetic)。
-通信模块：
-USB-CAN 适配器：支持 ZLG 协议 (如 USBCAN-2C/II)。
-USB-TTL 模块：用于连接 SBUS 接收机。
-输入设备：支持 SBUS 协议的航模遥控器（如 Futaba, RadioLink）。
-机械臂：6 自由度 CAN 总线机械臂。
+> 一个基于 ROS 1 (Noetic) 的六自由度机械臂控制系统，专为嵌入式平台（如树莓派、Jetson）设计。集成 **TRAC-IK** 高性能逆运动学解算、**CAN 总线**电机驱动及 **SBUS** 遥控器解析。
 
-依赖环境
-OS: Ubuntu 20.04 (Focal)
-ROS: Noetic
-外部工作空间: serial_ws (位于 /home/pi/serial_ws) - 必须存在，用于提供串口通信库。
-编译与安装 (关键步骤)
-由于本项目依赖外部的 serial 库环境，请务必严格按照以下顺序操作：
+---
+
+## 📖 目录 (Table of Contents)
+
+- [项目简介](#-项目简介-introduction)
+- [核心功能](#-核心功能-features)
+- [硬件清单](#-硬件清单-hardware-requirements)
+- [⚡ 快速开始 (Quick Start)](#-快速开始-quick-start)
+- [🛠️ 详细配置](#-详细配置-configuration)
+- [🎮 遥控器操作映射](#-遥控器操作映射-controls)
+- [📂 文件结构](#-文件结构-file-structure)
+- [常见问题](#-常见问题-troubleshooting)
+
+---
+
+## 📝 项目简介 (Introduction)
+
+本项目旨在提供一个轻量级且鲁棒的机械臂底层控制方案。核心节点 `main_ctrl` 运行一个状态机，支持关节空间直接控制和基于笛卡尔空间的逆运动学 (IK) 控制。
+
+**关键特性：**
+* **混合 IK 解算**：集成 `trac_ik_lib`，并发运行 KDL (Newton-Raphson) 和 NLOPT (SQP)，在奇异点附近表现优于原生 KDL。
+* **实时 CAN 通信**：基于 `controlcan` 库封装，实现 200Hz 的电机闭环控制。
+* **平滑控制**：内置低通滤波器与速度死区处理，消除机械抖动。
+* **安全机制**：具备一键清除电机错误与自动归位功能。
+
+---
+
+## ✨ 核心功能 (Features)
+
+| 模式 (Mode) | 名称 | 描述 |
+| :--- | :--- | :--- |
+| **Mode 1** | **自动复位 (Homing)** | 机械臂自动寻找零位，逐个关节归零，回到初始姿态。 |
+| **Mode 2** | **关节控制 (Joint)** | 通过摇杆直接控制 6 个关节的速度，适合调试与维护。 |
+| **Mode 3** | **笛卡尔控制 (IK)** | 控制末端工具在 XYZ 空间平移及旋转 (J1-J5 IK解算, J6 独立控制)。 |
+
+---
+
+## ⚙️ 硬件清单 (Hardware Requirements)
+
+1.  **计算平台**: Raspberry Pi 4B/5 或 NVIDIA Jetson (Ubuntu 20.04).
+2.  **通信模块**:
+    * **USB-CAN**: 支持 ZLG 协议的适配器 (如 USBCAN-2C/II).
+    * **USB-TTL**: 用于连接 SBUS 接收机.
+3.  **输入设备**: 支持 SBUS 协议的航模遥控器 (如 Futaba, RadioLink, AT9S).
+4.  **执行机构**: 6自由度 CAN 总线驱动机械臂.
+
+---
+
+## ⚡ 快速开始 (Quick Start)
+
+如果您已经配置好 Ubuntu 20.04 和 ROS Noetic 环境，请按以下步骤部署：
+
+### 1. 安装依赖
+```bash
+# 安装系统级依赖
+sudo apt update
+sudo apt install ros-noetic-serial ros-noetic-plotjuggler-ros ros-noetic-kdl-parser ros-noetic-nlopt
+
+# (可选) 安装 Catkin Tools
+sudo apt install python3-catkin-tools
