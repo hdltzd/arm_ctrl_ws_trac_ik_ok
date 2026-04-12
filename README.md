@@ -84,6 +84,7 @@ source devel/setup.bash
 ---
 ###3. 运行测试
 ```bash
+source /home/pi/serial_ws/install/setup.bash
 确保 USB 串口设备已插入。
 
 
