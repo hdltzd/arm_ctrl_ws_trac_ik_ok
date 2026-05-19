@@ -9,15 +9,15 @@
 ![image](https://github.com/hdltzd/arm_ctrl_ws_trac_ik_ok/blob/main/img/%E5%AE%9E%E6%9C%BA%E5%9B%BE.jpg)
 
 ---
-## 🎬 效果演示
+# 🎬 效果演示
 
 <div align="center">
 
-### 快速预览（30秒）
+## 快速预览（30秒）
 
 https://github.com/op7418/NanoBanana-PPT-Skills/assets/YOUR_USER_ID/demo-short.mp4
 
-### 完整教程
+## 完整教程
 
 **🎥 [观看完整演示视频（Bilibili 5分钟）](https://www.bilibili.com/video/BVXXXXXXX)** - 包含详细功能讲解
 
