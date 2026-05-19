@@ -5,6 +5,7 @@
 [![License](https://img.shields.io/badge/License-BSD-orange)]()
 
 > 一个基于 ROS 1 (Noetic) 的六自由度机械臂控制系统，专为嵌入式平台（如树莓派、Jetson）设计。集成 **TRAC-IK** 高性能逆运动学解算、**CAN 总线**电机驱动及 **SBUS** 遥控器解析。
+![image](https://github.com/ZhiliangMa/MPU6500-HMC5983-AK8975-BMP280-MS5611-10DOF-IMU-PCB/blob/main/img/IMU-V5-TOP.jpg)
 
 ---
 
