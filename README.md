@@ -14,7 +14,7 @@
 
 <div align="center">
 
-https://github.com/op7418/NanoBanana-PPT-Skills/assets/YOUR_USER_ID/demo.mp4
+[https://github.com/op7418/NanoBanana-PPT-Skills/assets/YOUR_USER_ID/demo.mp4](https://github.com/hdltzd/arm_ctrl_ws_trac_ik_ok/blob/main/img/%E5%A4%B9%E5%85%B7%E6%B5%8B%E8%AF%95.mp4)
 
 *点击播放查看完整演示*
 
