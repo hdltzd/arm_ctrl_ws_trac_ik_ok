@@ -22,7 +22,7 @@ https://github.com/hdltzd/arm_ctrl_ws_trac_ik_ok/blob/main/img/%E6%9C%BA%E6%A2%B
 *点击查看完整演示*
 **🎥 [观看完整演示视频（Bilibili 5分钟）](暂无)** - 包含详细功能讲解
 
-**🌍 [Watch Full Demo (YouTube 5min)](https://www.youtube.com/watch?v=mu_HsMCqezE)** - English subtitles available
+**🌍 [Watch Full Demo (YouTube 5min)](https://www.youtube.com/watch?v=sA0ZMphwA84)** - English subtitles available
 
 ### 负载5kg测试视频
 
@@ -40,7 +40,7 @@ https://github.com/hdltzd/arm_ctrl_ws_trac_ik_ok/blob/main/img/%E5%AE%9E%E5%9C%B
 *点击查看完整演示*
 **🎥 [观看完整演示视频（Bilibili 5分钟）](暂无)** - 包含详细功能讲解
 
-**🌍 [Watch Full Demo (YouTube 5min)](https://www.youtube.com/watch?v=mu_HsMCqezE)** - English subtitles available
+**🌍 [Watch Full Demo (YouTube 5min)](https://www.youtube.com/watch?v=Q6BTk_JlKlI)** - English subtitles available
 </div>
 
 ---
